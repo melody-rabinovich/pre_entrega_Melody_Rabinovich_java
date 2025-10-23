@@ -1,0 +1,124 @@
+<diagram program="umletino" version="15.1"><zoom_level>4</zoom_level><element><id>UMLClass</id><coordinates><x>252</x><y>320</y><w>116</w><h>80</h></coordinates><panel_attributes>Articulo
+--
+- id: int
+- nombre: String
+- precio: double
+--
+- setId(): void
+- setNombre(): void
+- setPrecio(): void
++ getId(): int
++ getNombre(): String
++ getPrecio(): double
++ actualizar(id: int, nombre: String, precio: double)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>404</x><y>320</y><w>200</w><h>160</h></coordinates><panel_attributes>Negocio 
+--
+
+--
++ listarArticulos(): void
++ buscarArticulo(nombre: String): Articulo
++ buscarArticulo(id: int): Articulo
++ crearArticulo(nombre: String, precio : double): Articulo 
++ eliminarArticulo( id: int): Articulo
++ modificarArticulo( id: int, nombre : String , precio : double): Articulo
+
++ listarClientes(): void
++ buscarCliente(dni : String) : Cliente
++ crearCliente(nombre: String, dni : String, email: String, tarjeta: String): Cliente
++ eliminarCliente(dni: String): Cliente
++ modificarCliente(nombre: String, dni:String, email: String, tarjeta: String): Cliente
+
++ listarPedidos(): void
++ buscarPedido(id: int): Pedido
++ crearPedido(articulosPedidos : ArrayList&lt;ArticuloPedido&gt; , cliente: Cliente  ): Pedido
+// pide por consola qué artículo, qué cantidad y qué Cliente. Verifica que se pueda hacer (busca el Articulo, se guarda la referencia, pide la cantidad, y usa esos datos para hacer un new ArticuloPedido), y hace new Pedido() y por parámetro le pasa el ArticuloPedido
+//osea, sería como un sub-menú, en el que pregunta constantemente "desea agregar otro producto? 1= si, 0=no" y si aprieta 1, pedirle la cantidad. Si aprieta 0, finalmente se hace el nuevo pedido
++ eliminarPedido(): Pedido
+
+- ultimoIndex(arrayList : ArrayList&lt;T&gt;) : int 
+- inicializarArticulos() :void
+- inicializarPedidos():void
+- inicializarClientes(): void
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>364</x><y>340</y><w>48</w><h>20</h></coordinates><panel_attributes>lt=&lt;-
+- articulos
+m1=*</panel_attributes><additional_attributes>11;20;100;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>380</x><y>68</y><w>192</w><h>204</h></coordinates><panel_attributes>Empleado
+--
+- legajo: String
+-
++ Empleado(String nombre, Srting dni, String legajo, Negocio negocioDeTrabajo)
++ Empleado(String nombre, Srting dni, String legajo)
+
+// ESTOS METODOS LLAMAN A LOS METODOS DE NEGOCIO
++ mostrarMenuArticulos() : void
++ listarArticulos(): void
++ buscarArticulo(nombre: String): Articulo
++ buscarArticulo(id: int): Articulo
++ crearArticulo(id: int, nombre: String, precio: double): Articulo
++ eliminarArticulo( id: int): Articulo
++ modificarArticulo( id: int, nombre: String, precio: double): Articulo
+
++ mostrarMenuClientes(): void
++ listarClientes() :void
++ buscarCliente(dni : String) : Cliente
++ crearCliente(): Cliente
++ eliminarCliente(email: String): Cliente
++ modificarCliente(email:String): Cliente
+
++ mostrarMenuPedidos():void
++ listarPedidos(): void
++ buscarPedido(id :int): Pedido
++ agregarArticuloParaPedido( articulosPedidos : ArrayList&lt;ArticuloPedido&gt;, articulo : ArticuloPedido) : ArticuloPedido
++ crearPedido(): Pedido
++ eliminarPedido(): Pedido
+
+- setLegajo(): void
+- setNegocioDeTrabajo() : void
+- setNegocioDeTrabajo(negocioDeTrabajo : Negocio): void
++ getLegajo(): String
++ getNegocioDeTrabajo(): Negocio</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>488</x><y>0</y><w>60</w><h>56</h></coordinates><panel_attributes>Persona
+--
+- nombre: String
+- dni: String
+-
+- setNombre(): void
+- setDni(): void
++ getNombre(): String
++ getDni(): String</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>456</x><y>28</y><w>40</w><h>48</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>80;10;10;10;10;100</additional_attributes></element><element><id>UMLClass</id><coordinates><x>644</x><y>88</y><w>148</w><h>56</h></coordinates><panel_attributes>Cliente
+--
+- email: String
+- numTarjeta: String
+-
+- setEmail() : void
+- setNumTarjeta(): void
++ getEmail(): String
++ getNumTarjeta(): String
++ actualizar(nombre: String, email: String, tarjeta: String) : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>544</x><y>28</y><w>136</w><h>68</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;320;10;320;150</additional_attributes></element><element><id>Relation</id><coordinates><x>452</x><y>268</y><w>56</w><h>60</h></coordinates><panel_attributes>lt=&lt;-
+- negocioDeTrabajo
+m1=1
+</panel_attributes><additional_attributes>10;130;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>568</x><y>112</y><w>84</w><h>12</h></coordinates><panel_attributes>lt=&lt;..</panel_attributes><additional_attributes>190;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>328</x><y>128</y><w>60</w><h>200</h></coordinates><panel_attributes>lt=&lt;..</panel_attributes><additional_attributes>10;480;10;10;130;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>676</x><y>320</y><w>72</w><h>72</h></coordinates><panel_attributes>Pedido
+--
+- id: int
+--
+- setId(): void
+- setArticuloPedido() : void
++ getId(): int
++ getArticuloPedido(): ArticuloPedido
++ listarArticulos():void
++ total(): double 
+// suma todos los precios de cada producto (teniendo en cuenta sus cantidades</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>448</x><y>388</y><w>256</w><h>160</h></coordinates><panel_attributes>lt=&lt;-
+- articulosPedidos
+m1=*</panel_attributes><additional_attributes>10;370;620;370;620;10</additional_attributes></element><element><id>UMLNote</id><coordinates><x>320</x><y>64</y><w>44</w><h>24</h></coordinates><panel_attributes>Empleado maneja 
+las respuestas y 
+las validaciones
+bg=green</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>296</x><y>520</y><w>156</w><h>44</h></coordinates><panel_attributes>ArticuloPedido
+--
+- cantidad: int
+--
+- setCantidad(cantidad: double): void
++ getCantidad(): int
++ calcularPrecio(): double</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>328</x><y>396</y><w>12</w><h>132</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;310</additional_attributes></element><element><id>Relation</id><coordinates><x>600</x><y>340</y><w>84</w><h>20</h></coordinates><panel_attributes>lt=&lt;-
+- pedidos
+m1=*</panel_attributes><additional_attributes>190;20;10;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>192</x><y>460</y><w>68</w><h>32</h></coordinates><panel_attributes>&lt;&lt;Interface&gt;&gt;
+/Vendible/
+--
+_+ calcularPrecio(): double_</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>224</x><y>492</y><w>84</w><h>64</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;10;140;190;140</additional_attributes></element></diagram>
